@@ -237,7 +237,7 @@ def run_with(conf, script, no_cache=False):
     work_dir = '/work'
     cmd = ['nvidia-docker', 'run',
            '-v', '%s:%s' % (host_cwd, work_dir),
-           '-w', work_dir, 
+           '-w', work_dir,
            name, script]
 
     res = subprocess.call(cmd)
