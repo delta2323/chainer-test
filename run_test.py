@@ -24,7 +24,7 @@ if __name__ == '__main__':
             'base': 'ubuntu14_py2',
             'cuda': 'cuda65',
             'cudnn': 'cudnn2',
-            'requires': ['cython'],
+            'requires': ['cython', 'numpy<1.11'],
         }
         script = './test.sh'
 
