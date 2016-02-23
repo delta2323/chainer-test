@@ -237,15 +237,16 @@ def run_with(conf, script, no_cache=False, volume=None, env=None):
     work_dir = '/work'
     cmd = ['nvidia-docker', 'run',
            '-v', '%s:%s' % (host_cwd, work_dir),
-           '-w', work_dir,
-           name, script]
+           '-w', work_dir]
 
     if volume:
         for v in volume:
             cmd += ['-v', '%s:%s' % (v, v)]
     if env:
         for var, val in env.items():
-            cmd += ['--env', '%s=%s' % (var, val)]
+            cmd += ['-e', '%s=%s' % (var, val)]
+
+    cmd += [name, script]
 
     res = subprocess.call(cmd)
     if res != 0:
@@ -289,7 +290,7 @@ def run_interactive(conf, no_cache=False, volume=None, env=None):
             cmd += ['-v', '%s:%s' % (v, v)]
     if env:
         for var, val in env.items():
-            cmd += ['--env', '%s=%s' % (var, val)]
+            cmd += ['-e', '%s=%s' % (var, val)]
 
     cmd += [name, '/bin/bash']
 
