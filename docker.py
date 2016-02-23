@@ -280,6 +280,7 @@ def run_interactive(conf, no_cache=False, volume=None, env=None):
     host_cwd = os.getcwd()
     work_dir = '/work'
     cmd = ['nvidia-docker', 'run',
+           '-rm',
            '-v', '%s:%s' % (host_cwd, work_dir),
            '-w', work_dir,
            '-i', '-t']
