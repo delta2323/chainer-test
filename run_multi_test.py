@@ -57,6 +57,6 @@ if __name__ == '__main__':
         conf['https_proxy'] = args.https_proxy
 
     if args.interactive:
-        pass
+        docker.run_interactive(conf, volume=volume, env=env)
     else:
         docker.run_with(conf, script, volume=volume, env=env)
